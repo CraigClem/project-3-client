@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { getToken } from './auth'
-import baseUrl from '../config.js'
+import { baseUrl } from '../config.js'
 
 // const baseUrl = '/api'
 

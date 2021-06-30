@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { isAuthor } from '../../lib/auth'
 import { getSingleUser, editUser } from '../../lib/api'
 import { useForm } from '../../hooks/useForm'
@@ -14,7 +14,7 @@ function UserCard() {
     image: '',
     summary: '',
   })
-  const history = useHistory()
+  // const history = useHistory()
 
 
 
