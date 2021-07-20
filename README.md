@@ -49,7 +49,7 @@ With the front-end wireframe complete we began to work on setting up the back-en
 
 * ### Models
 
-We created three Schemas for the app; one for the User, Posts and Comments which we used to define the Object fields and Data types required for a valid Object. To manage the relationships between data along with interacting with our MongoDB database we used Mongoose for our Object Data Model.
+We created three Schemas for the app; one for the User, Posts and Comments (comments is embedded within the post model) which we used to define the Object fields and Data types required for a valid Object. To manage the relationships between data along with interacting with our MongoDB database we used Mongoose for our Object Data Model.
 
 ```js
 const userSchema = new mongoose.Schema({
@@ -83,7 +83,7 @@ const commentSchema = new mongoose.Schema({
 })
 ```
 
-Once the inital schemas are been setup we then used Mongoose; Bycrpt, Unique validator and Hidden to secure the users details by encrypting, salting and hidding their password.
+Once the inital schemas had been setup we then used Mongoose; Bycrpt, Unique validator and Hidden to secure the users details by encrypting, salting and hidding their password.
 
 ```js
 
@@ -168,7 +168,7 @@ router.route('/register')
   .post(userController.register)
 ```
 
-Below shows the controller for creating a post which is an async function that takes three arguments (request, response and next). The code is also wrapped in a try catch block where the erroe response had been defined within the errorHandler file from our middleware folder. 
+Below shows the controller for creating a post which is an async function that takes three arguments (request, response and next). The code is wrapped in a try catch block and the error responses are defined within the errorHandler file from our middleware folder. 
 
 ```js
 async function createPost(req, res, next) {
@@ -183,7 +183,7 @@ async function createPost(req, res, next) {
 }
 ```
 
-ErrorHandler.js examples 
+ErrorHandler.js examples implemented to help identify the differnet types of errors the back-end might encounter when requests are being made. 
 
 ```js
 if (err.name === 'CastError') {
@@ -200,10 +200,12 @@ if (err.name === 'CastError') {
 
   if (err.name === 'ValidationError') {
     const errors = {}
-    
+
 ```
 
+With the back-end end setup, we beagn to work on the front-end using React as our JavaScript library.
 
+## Front-end 
 
 
 

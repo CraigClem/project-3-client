@@ -36,13 +36,11 @@ function UserCard() {
 
   
 
-  const handleClick = () => {
-   
+  const handleClick = () => { 
     setPopup('modal is-active')
   }
 
-  const handleClose = () => {
-    
+  const handleClose = () => {  
     setPopup('modal')
   }
 
