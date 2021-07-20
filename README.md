@@ -118,6 +118,96 @@ userSchema.plugin(mongooseHidden({ defaultHidden: { password: true, email: true,
 export default mongoose.model('User', userSchema)
 
 ```
+
+## Routes and Controllers 
+
+Once our Schema's had been setup we began working on the end points for our API to support CRUD functionality with Express and defining the required secure routes from our middleware.
+
+* GET, POST, PUT, DELETE requests
+
+```js
+const router = express.Router()
+
+// * Post
+
+router.route('/posts')
+  .get(postController.index)
+  .post(secureRoute, postController.createPost)
+
+router.route('/posts/:postId')
+  .get(postController.show)
+  .put(secureRoute, postController.updatePost)
+  .post(secureRoute, postController.likePost)
+  .delete(secureRoute, postController.removePost)
+
+// * Comments
+
+router.route('/posts/:postId/comments')
+  .post(secureRoute, commentController.createComment)
+
+router.route('/posts/:postId/comments/:commentId')
+  .put(secureRoute, commentController.updateComment)
+  .post(secureRoute, commentController.likeComment)
+  .delete(secureRoute, commentController.removeComment)
+
+// * User Profiles
+
+router.route('/profile')
+  .get(userController.indexProfiles)
+
+router.route('/profile/:profileId')
+  .put(secureRoute, userController.updateProfile)
+  .get(userController.showProfile)
+
+// * Auth
+
+router.route('/login')
+  .post(userController.login)
+
+router.route('/register')
+  .post(userController.register)
+```
+
+Below shows the controller for creating a post which is an async function that takes three arguments (request, response and next). The code is also wrapped in a try catch block where the erroe response had been defined within the errorHandler file from our middleware folder. 
+
+```js
+async function createPost(req, res, next) {
+  console.log('Create Post Start...')
+  req.body.user = req.currentUser
+  try {
+    const newPost = await Post.create(req.body)
+    res.status(201).json(newPost)
+  } catch (e) {
+    next(e)
+  }
+}
+```
+
+ErrorHandler.js examples 
+
+```js
+if (err.name === 'CastError') {
+    return res.status(400).json({ message: 'Invalid parameter given' })
+  }
+
+  if (err.name === 'NotFound') {
+    return res.status(404).json({ message: 'Not Found' })
+  }
+
+  if (err.name === 'NotValid') {
+    return res.status(400).json({ message: 'There was a problem.' })
+  }
+
+  if (err.name === 'ValidationError') {
+    const errors = {}
+    
+```
+
+
+
+
+
+
  
 
 
