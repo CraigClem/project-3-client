@@ -314,8 +314,6 @@ const { formdata, setFormdata, formErrors, setFormErrors, handleChange } = useFo
   })
 ```
 
-
-
 ```js
 const handleSubmit = async event => {
     event.preventDefault()
@@ -328,6 +326,58 @@ const handleSubmit = async event => {
     }
   }
 ```
+
+### Modal Edit Pop-Up
+
+```js
+const [popup, setPopup] = React.useState('modal')
+```
+
+If all the conditions were met and the user was the owner of the profile then when the edit button was clicked, a pop up would appear for the user to edit. This is achieved by setting state and creating two functions to handle the click of the button which then in turn changes the className of the div:
+
+```js
+ const handleClick = () => { 
+    setPopup('modal is-active')
+  }
+```
+```js
+ const handleClose = () => {  
+    setPopup('modal')
+  }
+```
+
+```js
+<div className={popup}>
+        <div className="modal-background"></div>
+        <div className="modal-card">
+          <header className="modal-card-head">
+            <p className="modal-card-title">Create a new post!</p>
+            <button onClick={handleClose} className="delete" aria-label="close"></button>
+          </header>
+          <section className="modal-card-body">
+            <div className="field">
+              <label className="label" htmlFor>Profile Name</label>
+              <div className="control">
+                <input
+                  className={`input ${formErrors.username ? 'is-danger' : ''}`}
+                  type="text"
+                  placeholder="Your Profile Name"
+                  name="username"
+                  onChange={handleChange}
+                  value={formdata.username}
+                />
+
+```
+
+### Challenges
+
+There were a number of challeges with this project however I felt that one of the main challenges for me personally was understanding the relationship between parent and child components so that props could be passed down successfully and re-used elsewhere. This is still a concept that I feel requires more reading and preactice to be able to confidently implement on future projects. Version control and working on branches also was a challenge and making a decision to use VS Codes integrated Git functionality or the command line was an iteresting process. I used the command line in the end.
+
+### Wins
+
+Working with a great team and being able to contribute to full-stack project in just over a week was the win I am most proud of; having the opportunity to practice and implement all the skills we had newly learned, bouncing our ideas and questions off one another to colletively provide solutions to achieve our end goal. I'm looking forward starting a new full stack project and consolidating my knowledge of the technologies used on this project futher.
+
+
 
 
 
