@@ -207,6 +207,134 @@ With the back-end end setup, we beagn to work on the front-end using React as ou
 
 ## Front-end 
 
+### Approach
+
+At the begining of the project the Team and I began white boarding the layout of user interface. With a fairly well known social media application already out in the world we had a pretty clear idea/goal in mind from the get go which helped with keeping the final products aesthetics clear. Below are screen shots from our whiteboarding session. As we were working in a group of three, we were also introduced to the concept of branching/version control so we all created our own feature branches, and then at the end of the day would pull, push and merge out work. We purposley tried to avoid working on the same components at the same time to help prevent the number of conflicts that my occur. 
+
+### UserCard
+
+We split the various components required for the project between the group and I began to work on the UserCard whilst Bradley and Dan worked on the Login/Authentication and Posts. To begin with I started by creating a useEffect async function to **getSingleUser**. getSingleUser is a function we created in our Lib folder in a file called api.js which handles all of our API endpoint functions for readbality and ease.
+
+```js
+export function getSingleUser(profileId) {
+  return axios.get(`${baseUrl}/profile/${profileId}`)
+}
+```
+
+I then passed **userId** as an argument to **getSingleUser** to display a single users profile and in conjunction with **{ useParams }** display the users page. 
+
+```js
+  React.useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await getSingleUser(userId)
+        setFormdata(response.data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getData()
+  }, [userId, setFormdata, setFormErrors])
+
+```
+
+The useEffect function is then called everytime wither the userId, setFormData or setFormErrors change as specified in the dependency array.
+
+### UserCard Edit
+
+Using the custom hook we created **useForm** I then created a edit option so that the user could update thier profile image, username and about section. 
+
+```js 
+export function useForm(initialFormdata) {
+  const [formdata, setFormdata] = React.useState(initialFormdata)
+  const [formErrors, setFormErrors] = React.useState(initialFormdata)
+
+  const handleChange = event => {
+    setFormdata({ ...formdata, [event.target.name]: event.target.value })
+    setFormErrors({ ...formErrors, [event.target.name]: '' })
+  }
+
+  return {
+    formdata,
+    formErrors,
+    handleChange,
+    setFormErrors,
+    setFormdata,
+  }
+}
+```
+Using a ternanay expression I then checked to see if the user was authenticated and then owner of the profile to conditionally render the edit button. If the user was authenticated and the profile owner they would then see the edit button. If they were a guest user then, the button would not be displayed and editing would not be accesssible. 
+
+to check if the user is the author I used the **isAuthor** function which we created in our Lib folder in our auth.js file.
+
+```js
+export function isAuthor(userId) {
+  const payload = getPayload()
+  if (!isAuthenticated()) return false
+  return payload.userId === userId
+}
+```
+
+```js
+{isAuthor(userId) ?
+        <button className="button is-warning" onClick={handleClick}>Edit Profile</button>
+        :
+        <div />
+      }
+      <div className={popup}>
+        <div className="modal-background"></div>
+        <div className="modal-card">
+          <header className="modal-card-head">
+            <p className="modal-card-title">Create a new post!</p>
+            <button onClick={handleClose} className="delete" aria-label="close"></button>
+          </header>
+          <section className="modal-card-body">
+            <div className="field">
+              <label className="label" htmlFor>Profile Name</label>
+              <div className="control">
+                <input
+                  className={`input ${formErrors.username ? 'is-danger' : ''}`}
+                  type="text"
+                  placeholder="Your Profile Name"
+                  name="username"
+                  onChange={handleChange}
+                  value={formdata.username}
+                />
+```
+
+### Editing the UserCard
+
+To allow the user to edit their profile, I created a **HandleSubmit** function which is an async function that uses our **editUser** function with the userId and formata props as arguments. This is then wrapped in a try catch block to handle errors too. 
+
+```js
+const { formdata, setFormdata, formErrors, setFormErrors, handleChange } = useForm({
+    username: '',
+    image: '',
+    summary: '',
+  })
+```
+
+
+
+```js
+const handleSubmit = async event => {
+    event.preventDefault()
+    try {
+      await editUser(userId, formdata)
+      location.reload()
+    } catch (err) {
+      setFormErrors(err.response.data.errors)
+      console.log(formErrors)
+    }
+  }
+```
+
+
+
+
+
+
+
 
 
 

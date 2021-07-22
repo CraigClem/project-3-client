@@ -15,26 +15,17 @@ function UserCard() {
     summary: '',
   })
   // const history = useHistory()
-
-
-
-
   React.useEffect(() => {
     const getData = async () => {
       try {
         const response = await getSingleUser(userId)
-
         setFormdata(response.data)
-        
       } catch (err) {
         console.log(err)
-
       }
     }
     getData()
   }, [userId, setFormdata, setFormErrors])
-
-  
 
   const handleClick = () => { 
     setPopup('modal is-active')
