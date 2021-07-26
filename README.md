@@ -267,7 +267,7 @@ export function useForm(initialFormdata) {
 ```
 Using a ternanay expression I then checked to see if the user was authenticated and then owner of the profile to conditionally render the edit button. If the user was authenticated and the profile owner they would then see the edit button. If they were a guest user then, the button would not be displayed and editing would not be accesssible. 
 
-to check if the user is the author I used the **isAuthor** function which we created in our Lib folder in our auth.js file.
+To check if the user is the author I used the **isAuthor** function which we created in our Lib folder in our auth.js file.
 
 ```js
 export function isAuthor(userId) {
