@@ -40,12 +40,12 @@ This was our third project during the General Assembely Bootcamp where we were p
 
 ## Approach
 
-As a group we started to discuss a number of ideas that we felt would be challenging however also help consolidate the concepts and fundementals we had recenlty learned in lesson. After considering various ideas we set out our approach to create a basic social media appliation where users could sign up, create a profile and make posts, which could be edited, commented on and liked. We then started to work on our wireframe for the front-end layout and design.
+As a group we started to discuss a number of ideas that we felt would be challenging however also help consolidate the concepts and fundementals we had recently learned in lesson. After considering various ideas we set out our approach to create a basic social media application where users could sign up, create a profile and make posts, which could be edited, commented on and liked. 
+
+We then started to work on our wireframe for the front-end layout and design and then Bradley, Dan  and myself began to work on the backend where we split and delegated the tasks to be complete. The areas which I worked on were; Post Schema, Secure Routes, Controllers - comment like, edit and delete and the comment post.
 
 
 ## Backend
-
-With the front-end wireframe complete we began to work on setting up the back-end. 
 
 * ### Models
 
