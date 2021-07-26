@@ -369,6 +369,15 @@ If all the conditions were met and the user was the owner of the profile then wh
 
 ```
 
+### ScreenShots
+
+<img src="images/PeekLogin.png"/>
+
+<img src="images/Screenshot 2021-07-26 at 10.21.34.png"/>
+
+<img src="images/PeekPosts.png"/>
+
+
 ### Challenges
 
 There were a number of challeges with this project however I felt that one of the main challenges for me personally was understanding the relationship between parent and child components so that props could be passed down successfully and re-used elsewhere. This is still a concept that I feel requires more reading and preactice to be able to confidently implement on future projects. Version control and working on branches also was a challenge and making a decision to use VS Codes integrated Git functionality or the command line was an iteresting process. I used the command line in the end.
