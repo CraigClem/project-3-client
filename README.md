@@ -44,12 +44,14 @@ As a group we started to discuss a number of ideas that we felt would be challen
 
 We then started to work on our wireframe for the front-end layout and design and then Bradley, Dan  and myself began to work on the backend where we split and delegated the tasks to be complete. The areas which I worked on were; Post Schema, Secure Routes, Controllers - comment like, edit and delete and the comment post.
 
+Throughout the project Bradley, Dan and myself had morning and afternoon standups to discuss what had been completed, what we would work on next and help each other with any problems that arose.
+
 
 ## Backend
 
 * ### Models
 
-We created three Schemas for the app; one for the User, Posts and Comments (comments is embedded within the post model) which we used to define the Object fields and Data types required for a valid Object. To manage the relationships between data along with interacting with our MongoDB database we used Mongoose for our Object Data Model.
+As a team we worked together and created three Schemas for the app; one for the User, Posts and Comments (comments is embedded within the post model) which we used to define the Object fields and Data types required for a valid Object. To manage the relationships between data along with interacting with our MongoDB database we used Mongoose for our Object Data Model.
 
 ```js
 const userSchema = new mongoose.Schema({
@@ -209,7 +211,7 @@ With the back-end end setup, we beagn to work on the front-end using React as ou
 
 ### Approach
 
-At the begining of the project the Team and I began white boarding the layout of user interface. With a fairly well known social media application already out in the world we had a pretty clear idea/goal in mind from the get go which helped with keeping the final products aesthetics clear. Below are screen shots from our whiteboarding session. As we were working in a group of three, we were also introduced to the concept of branching/version control so we all created our own feature branches, and then at the end of the day would pull, push and merge out work. We purposley tried to avoid working on the same components at the same time to help prevent the number of conflicts that my occur. 
+At the begining of the project the Team and I began white boarding the layout of user interface. With a fairly well known social media application already out in the world we had a pretty clear idea/goal in mind from the get go which helped with keeping the final products aesthetics clear. Below are screen shots from our whiteboarding session. As we were working in a group of three, we were also introduced to the concept of branching/version control so we all created our own feature branches, and then at the end of the day would pull, push and merge out work. We purposely tried to avoid working on the same components at the same time to help prevent the number of conflicts that my occur. 
 
 ### UserCard
 
@@ -386,6 +388,10 @@ There were a number of challeges with this project however I felt that one of th
 
 Working with a great team and being able to contribute to full-stack project in just over a week was the win I am most proud of; having the opportunity to practice and implement all the skills we had newly learned, bouncing our ideas and questions off one another to colletively provide solutions to achieve our end goal. I'm looking forward starting a new full stack project and consolidating my knowledge of the technologies used on this project futher.
 
+
+### Key Learning
+
+Completing this project helped consolidate my understanding access a backend database to serve the client side page - what is required of a Schema, implementing secure routes, creating tokens and authenticating users for log-in. In additon to the server, I also gained a deeper understanding of React, how to access data more efficently by passing props from a parent component to a child and implementing more array methods to add functionilty to the App. I'm looking forward to continuing my learning on a new project I have just started.
 
 
 
